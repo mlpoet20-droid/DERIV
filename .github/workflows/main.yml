@@ -1,3 +1,0 @@
-git add android
-git commit -m "Add Android folder for Codemagic build"
-git push
