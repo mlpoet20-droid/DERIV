@@ -2,17 +2,21 @@ workflows:
   deriv_synthetics_android:
     name: Deriv Synthetics Android APK
     max_build_duration: 60
-    instance_type: mac_mini_m1
 
     environment:
       flutter: stable
 
     scripts:
+      - name: Clean
+        script: flutter clean
+
       - name: Get dependencies
         script: flutter pub get
 
       - name: Build APK
-        script: flutter build apk --release
+        script: |
+          flutter build apk --release
+          ls build/app/outputs/flutter-apk/
 
     artifacts:
-      - build/app/outputs/flutter-apk/app-release.apk
+      - build/app/outputs/flutter-apk/*.apk
